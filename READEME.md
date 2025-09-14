@@ -1,2 +1,2 @@
-hi github!
-this is test sentence
+hi github!/n
+this is a test  sentence
