@@ -1,0 +1,95 @@
+객체지향 프로그래밍(OOP)의 4대 원칙은 캡슐화, 상속, 다형성, 추상화입니다. 이 네 가지는 유연하고 유지보수하기 좋은 소프트웨어를 만드는 핵심 설계 원칙입니다.
+
+🧱 1. 캡슐화 (Encapsulation)
+정의: 객체의 내부 상태(데이터)를 외부에서 직접 접근하지 못하도록 감추고, 메서드를 통해서만 접근하도록 제한하는 것.
+
+목적:
+
+데이터 보호 및 무결성 유지
+코드 변경 시 외부 영향 최소화
+예시 (Dart):
+
+class BankAccount {
+  double _balance = 0;
+
+  double get balance => _balance;
+
+  void deposit(double amount) {
+    if (amount > 0) _balance += amount;
+  }
+
+  void withdraw(double amount) {
+    if (amount <= _balance) _balance -= amount;
+  }
+}
+🧬 2. 상속 (Inheritance)
+정의: 기존 클래스의 속성과 기능을 새로운 클래스가 물려받아 재사용하거나 확장하는 것.
+
+목적:
+
+코드 재사용
+계층 구조 설계
+예시:
+
+class Animal {
+  void move() => print("움직인다");
+}
+
+class Dog extends Animal {
+  void bark() => print("멍멍");
+}
+🎭 3. 다형성 (Polymorphism)
+정의: 동일한 인터페이스나 메서드가 다양한 방식으로 동작할 수 있도록 하는 것.
+
+목적:
+
+유연한 코드 작성
+인터페이스 기반 설계 가능
+예시:
+
+class Animal {
+  void makeSound() => print("소리를 낸다");
+}
+
+class Cat extends Animal {
+  @override
+  void makeSound() => print("야옹");
+}
+
+class Duck extends Animal {
+  @override
+  void makeSound() => print("꽥꽥");
+}
+
+void main() {
+  List<Animal> animals = [Cat(), Duck()];
+  for (var animal in animals) {
+    animal.makeSound(); // 각각의 방식으로 동작
+  }
+}
+🧩 4. 추상화 (Abstraction)
+정의: 복잡한 내부 구현은 숨기고, 필요한 기능만 외부에 노출하는 것.
+
+목적:
+
+핵심 기능에 집중
+인터페이스 기반 설계
+예시:
+
+abstract class Shape {
+  double getArea();
+}
+
+class Circle extends Shape {
+  double radius;
+  Circle(this.radius);
+
+  @override
+  double getArea() => 3.14 * radius * radius;
+}
+🧠 요약 비교표
+원칙	핵심 개념	장점
+캡슐화	데이터 보호, 접근 제한	안정성, 유지보수 용이
+상속	코드 재사용, 계층 구조	중복 제거, 확장성
+다형성	동일 인터페이스, 다양한 동작	유연성, 인터페이스 기반 설계
+추상화	복잡성 숨김, 핵심 기능 노출	간결성, 모듈화
